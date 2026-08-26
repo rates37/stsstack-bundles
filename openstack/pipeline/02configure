@@ -360,6 +360,7 @@ do
         --manila-ganesha)
             assert_min_release rocky "manila"
             has_opt --manila || set -- $@ --manila && cache $@
+            MOD_OVERLAYS+=("openstack/manila-ganesha.yaml")
             # need to list both here in case --ovn comes after --manila on cli
             # since --ovn adds --vault as a dep.
             if has_opt --vault || is_ml2_ovn; then
